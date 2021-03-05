@@ -1,5 +1,10 @@
 import './App.css';
 
+// Pseudocode:
+  // Make a call to the Bored API
+  // Store results of that call in state
+  // Display results on the page based on user input
+
 function App() {
   return (
     <div className="App">
