@@ -1,10 +1,11 @@
 // import './App.css';
 import Form from './Form.js';
+import Activities from './Activities.js'
 import axios from 'axios';
 import { useState } from 'react';
 
 function App() {
-  // Make a call to the API on form submit
+
   const handleSubmit = (event) => {
     event.preventDefault();
     axios({
@@ -23,18 +24,17 @@ function App() {
     setType(radioValue);
   }
 
-  // Store results of that call in state
   const [ activity, setActivity ] = useState('');
   const [ type, setType ] = useState('');
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Bored &amp; Lonely</h1>
-        <p>An activity generator for lethargic lockdowns</p>
+      <div className="wrapper">
+        <header>
+            <h1>Bored &amp; Lonely</h1>
+            <h2>An activity generator for lethargic lockdowns</h2>
+        </header>
         <Form showResults={handleSubmit} handleChange={handleChange}/>
-        <p>{activity}</p>
-      </header>
+        <Activities results={activity} />
     </div>
   );
 }
@@ -42,4 +42,4 @@ function App() {
 export default App;
 
 // To Do:
-  // Create activities component and display results on page based on user selection
+  // Explore other filter parameters
