@@ -1,4 +1,14 @@
-/* .App {
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Trebuchet', sans-serif;
+  font-size: 2rem;
+}
+
+.App {
   text-align: center;
 }
 
@@ -26,4 +36,4 @@ input {
 h1,
 h2 {
   margin: 10px 0;
-} */
+}
