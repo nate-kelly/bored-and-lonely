@@ -14,35 +14,37 @@ const Form = ({submit, selection}) => {
           )
         })
         } */}
-        <div>
-          <label htmlFor="recreational">Recreational</label>
+        <div className="radioSelect">
           <input type="radio" name="activityType" id="recreational" onChange={(event) => selection(event.target.value)} value="recreational" required />
+          <label htmlFor="recreational">Recreational</label>
         </div>
-        <div>
-          <label htmlFor="education">Education</label>
+        <div className="radioSelect">
           <input type="radio" name="activityType" id="education" onChange={(event) => selection(event.target.value)} value="education" />
+          <label htmlFor="education">Education</label>
         </div>
-        <div>
-          <label htmlFor="cooking">Cooking</label>
+        <div className="radioSelect">
           <input type="radio" name="activityType" id="cooking" onChange={(event) => selection(event.target.value)} value="cooking" />
+          <label htmlFor="cooking">Cooking</label>
         </div>
-        <div>
-          <label htmlFor="relaxation">Relaxation</label>
+        <div className="radioSelect">
           <input type="radio" name="activityType" id="relaxation" onChange={(event) => selection(event.target.value)} value="relaxation" />
+          <label htmlFor="relaxation">Relaxation</label>
         </div>
-        <div>
-          <label htmlFor="busywork">Busywork</label>
+        <div className="radioSelect">
           <input type="radio" name="activityType" id="busywork" onChange={(event) => selection(event.target.value)} value="busywork" />
+          <label htmlFor="busywork">Busywork</label>
         </div>
-        <div>
-          <label htmlFor="music">Music</label>
+        <div className="radioSelect">
           <input type="radio" name="activityType" id="music" onChange={(event) => selection(event.target.value)} value="music" />
+          <label htmlFor="music">Music</label>
         </div>
-        <div>
-          <label htmlFor="diy">DIY</label>
+        <div className="radioSelect">
           <input type="radio" name="activityType" id="diy" onChange={(event) => selection(event.target.value)} value="diy" />
+          <label htmlFor="diy">DIY</label>
         </div>
-        <button>Give me something to do!</button>
+        <div className="buttonSelect">
+          <button>Give me something to do!</button>
+        </div>
       </form>
     </section>
   )

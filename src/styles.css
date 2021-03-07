@@ -18,7 +18,7 @@ html {
 
 body {
   margin: 0;
-  text-align: center;
+  /* text-align: center; */
   font-family: 'Poppins', sans-serif;
   font-size: 2rem;
   letter-spacing: 0.2rem;
@@ -35,7 +35,7 @@ body {
 /* Main Container */
 
 .wrapper {
-  width: 80%;
+  width: 70%;
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -47,37 +47,38 @@ body {
 }
 
 /* Typography */
-h1,
-h2,
-h3 {
-  margin: 1.5rem 0;
-}
-
 h1 {
   font-size: 7rem;
+  margin: 0 0 1.5rem;
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: 3rem;
+  margin: 1.5rem 0 0;
   font-weight: 200;
+}
+
+h3 {
+  font-size: 2.5rem;
+  margin: 1.5rem 0;
 }
 
 /* Header Styles */
 
 header {
   background: #274C77;
-  padding: 4rem;
+  padding: 5rem;
   color: ghostwhite;
 }
 
 /* Section Styles */
 
-.resultSection {
+.formSection {
   padding: 5rem;
 }
 
-.formSection {
-  margin: 4rem;
+.resultSection {
+  padding: 0 5rem 5rem;
 }
 
 /* Form Styles */
@@ -85,19 +86,65 @@ header {
 form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  align-items: left;
 }
 
-form div {
+.radioSelect {
   margin: 2rem 0;
+  position: relative;
+}
+
+.buttonSelect {
+  margin-top: 2rem;
 }
 
 input {
-  margin: 0 1.5rem;
+  opacity: 0;
+  height: 4rem;
+  width: 4rem;
+  position: absolute;
+	left: 0;
+	top: 0;
+}
+
+label {
+  margin-left: 6rem;
+}
+
+label::before {
+  border: 2px solid #274C77;
+  content: '';
+  height: 3rem;
+  width: 3rem;
+  position: absolute;
+  border-radius: 50%;
+  left: 0;
+  top: -0.2rem;
+}
+
+label::after {
+  content: "";
+	opacity: 0;
+	border: 1rem solid #d34500;
+	border-radius: 50%;
+	position: absolute;
+	left: 0.5rem;
+	top: 0.3rem;
+	transition: opacity 0.2s ease-in-out;
+}
+
+input:checked + label::after {
+  opacity: 1;
+}
+
+input:focus + label::before {
+	box-shadow: 0 0 0 0.3rem #d34500;	
+  outline: 0.3rem solid transparent; 
 }
 
 button {
-  margin: 2rem 0;
+  display: inline;
   padding: 2rem 4rem;
   font-size: inherit;
   font-family: inherit;
@@ -107,12 +154,17 @@ button {
   outline: none;
   color: #fff;
   background-color: #d34500;
-  border: none;
+  border: 3px solid transparent;
   box-shadow: 0 0.5rem #999;
 }
 
+button:hover,
+button:focus {
+  background: #993200;
+}
+
 button:active {
-  background-color: #993200;
+  background: #333333;
   box-shadow: 0 0 #999;
   transform: translateY(4px);
 }
@@ -121,7 +173,7 @@ button:active {
 footer {
   background: #A6B5C7;
   color: #333333;
-  padding: 0.5rem 0;
+  padding: 1.5rem 5rem;
 }
 
 footer a {
