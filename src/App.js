@@ -19,7 +19,7 @@ function App() {
     }).then(response => {
       setActivity(response.data.activity);
     }).catch(() => {
-      alert('Sorry, looks like there is an issue getting your activity. Please try again later.')
+      alert('Sorry, there is an issue retriving your request. Please try again later.')
     });
   }
 
