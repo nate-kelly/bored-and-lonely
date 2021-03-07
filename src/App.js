@@ -5,7 +5,8 @@ import axios from 'axios';
 import { useState } from 'react';
 
 function App() {
-
+  
+  // API call on form submit
   const handleSubmit = (event) => {
     event.preventDefault();
     axios({
@@ -17,29 +18,39 @@ function App() {
       }
     }).then(response => {
       setActivity(response.data.activity);
-    })
+    }).catch(() => {
+      alert('Sorry, looks like there is an issue getting your activity. Please try again later.')
+    });
   }
-  
+
+  // Capture radio input value
   const handleChange = (radioValue) => {
     setType(radioValue);
   }
 
+  // State functions to update activity and type variables with API and form values
   const [ activity, setActivity ] = useState('');
   const [ type, setType ] = useState('');
 
+  // Page content
   return (
-      <div className="wrapper">
+    <div className="wrapper">
+      <div className="contentBox">
         <header>
             <h1>Bored &amp; Lonely</h1>
             <h2>An activity generator for lethargic lockdowns</h2>
         </header>
-        <Form showResults={handleSubmit} handleChange={handleChange}/>
-        <Activities results={activity} />
+        <main>
+          <Form submit={handleSubmit} selection={handleChange}/>
+          {
+          activity !== ''
+          ? <Activities results={activity} />
+          : null
+          }
+        </main>
+      </div>
     </div>
   );
 }
 
 export default App;
-
-// To Do:
-  // Explore other filter parameters
