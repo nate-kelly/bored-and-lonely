@@ -1,8 +1,19 @@
 const Form = ({submit, selection}) => {
+  // const categories = ['Recreational', 'Education', 'Cooking', 'Relaxation', 'Busywork', 'Music', 'DIY'];
   return (
     <section className="formSection">
       <form onSubmit={submit}>
         <h3>Choose an activity type:</h3>
+        {/* {
+        categories.map((type) => {
+          return (
+            <div>
+              <label htmlFor={type}>{type}</label>
+              <input type="radio" name="activityType" id={type} onChange={(event) => selection(event.target.value)} value={type} required />
+            </div>
+          )
+        })
+        } */}
         <div>
           <label htmlFor="recreational">Recreational</label>
           <input type="radio" name="activityType" id="recreational" onChange={(event) => selection(event.target.value)} value="recreational" required />

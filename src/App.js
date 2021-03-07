@@ -2,7 +2,8 @@
 import Form from './Form.js';
 import Activities from './Activities.js'
 import axios from 'axios';
-import { useState } from 'react';
+import firebase from './firebase.js';
+import { useState, useEffect } from 'react';
 
 function App() {
   
@@ -28,9 +29,29 @@ function App() {
     setType(radioValue);
   }
 
-  // State functions to update activity and type variables with API and form values
+  // State to store update activity and type variables with API and form values
   const [ activity, setActivity ] = useState('');
   const [ type, setType ] = useState('');
+
+  // Firesbase data
+  const [ tasks, setTasks ] = useState([]);
+
+  useEffect(() => {
+    // Reference to database
+    const dbRef = firebase.database().ref();
+    // Event listener that fires on change in database
+    dbRef.on('value', (response) => {
+      // Variable to store new state
+      const newState = [];
+      // Variable to store response from our query to Firebase
+      const data = response.val();
+      // Access activity name through loop
+      for (let key in data) {
+        newState.push(data[key]);
+      }
+      setTasks(newState);
+    })
+  }, []);
 
   // Page content
   return (
@@ -42,6 +63,14 @@ function App() {
         </header>
         <main>
           <Form submit={handleSubmit} selection={handleChange}/>
+          {/* Firebase experiment */}
+          {
+          tasks.map((item) => {
+            return (
+              <p>{item}</p>
+            )
+          })
+          }
           {
           activity !== ''
           ? <Activities results={activity} />
