@@ -34,24 +34,23 @@ function App() {
   const [ type, setType ] = useState('');
 
   // Firesbase data
-  const [ tasks, setTasks ] = useState([]);
-
-  useEffect(() => {
-    // Reference to database
-    const dbRef = firebase.database().ref();
-    // Event listener that fires on change in database
-    dbRef.on('value', (response) => {
-      // Variable to store new state
-      const newState = [];
-      // Variable to store response from our query to Firebase
-      const data = response.val();
-      // Access activity name through loop
-      for (let key in data) {
-        newState.push(data[key]);
-      }
-      setTasks(newState);
-    })
-  }, []);
+  // const [ tasks, setTasks ] = useState([]);
+  // useEffect(() => {
+  //   // Reference to database
+  //   const dbRef = firebase.database().ref();
+  //   // Event listener that fires on change in database
+  //   dbRef.on('value', (response) => {
+  //     // Variable to store new state
+  //     const newState = [];
+  //     // Variable to store response from our query to Firebase
+  //     const data = response.val();
+  //     // Access activity name through loop
+  //     for (let key in data) {
+  //       newState.push(data[key]);
+  //     }
+  //     setTasks(newState);
+  //   })
+  // }, []);
 
   // Page content
   return (
@@ -62,21 +61,25 @@ function App() {
             <h2>An activity generator for lethargic lockdowns</h2>
         </header>
         <main>
-          <Form submit={handleSubmit} selection={handleChange}/>
+          <Form submit={handleSubmit} selection={handleChange} />
           {/* Firebase experiment */}
-          {
+          {/* {
           tasks.map((item) => {
             return (
               <p>{item}</p>
             )
           })
           }
+          <button>Save task</button> */}
           {
           activity !== ''
           ? <Activities results={activity} />
           : null
           }
         </main>
+        <footer>
+          <p>Created at <a href="https://www.junocollege.com" target="_blank" rel="noreferrer">Juno College</a></p>
+        </footer>
       </div>
     </div>
   );

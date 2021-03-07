@@ -3,7 +3,7 @@ const Form = ({submit, selection}) => {
   return (
     <section className="formSection">
       <form onSubmit={submit}>
-        <h3>Choose an activity type:</h3>
+        <h3>Choose a category:</h3>
         {/* {
         categories.map((type) => {
           return (
