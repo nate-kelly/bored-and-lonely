@@ -83,23 +83,29 @@ header {
 
 /* Form Styles */
 
-form {
+/* form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: left;
-}
+} */
 
 .radioSelect {
-  margin: 2rem 0;
-  position: relative;
+  margin: 4rem 0;
 }
 
-.buttonSelect {
-  margin-top: 2rem;
+label {
+  text-transform: capitalize;
+  margin-left: 2rem;
 }
 
-input {
+/* input[type='radio'] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+} */
+
+/* input {
   opacity: 0;
   height: 4rem;
   width: 4rem;
@@ -115,6 +121,7 @@ input {
 
 label {
   margin-left: 6rem;
+  text-transform: capitalize;
 }
 
 label::before {
@@ -146,20 +153,17 @@ input:checked + label::after {
 input:focus + label::before {
 	box-shadow: 0 0 0 0.3rem #d34500;	
   outline: 0.3rem solid transparent; 
-}
+} */
 
 button {
-  display: inline;
   padding: 2rem 4rem;
   font-size: inherit;
   font-family: inherit;
   letter-spacing: inherit;
-  text-align: center;
   cursor: pointer;
-  outline: none;
   color: #fff;
+  border: 0;
   background-color: #d34500;
-  border: 3px solid transparent;
   box-shadow: 0 0.5rem #999;
 }
 
@@ -171,7 +175,7 @@ button:focus {
 button:active {
   background: #333333;
   box-shadow: 0 0 #999;
-  transform: translateY(4px);
+  transform: translateY(0.5rem);
 }
 
 /* Footer Styles */
@@ -189,7 +193,6 @@ footer a {
 footer a:hover,
 footer a:focus {
   color: black;
-  font-weight: 500;
   text-decoration: underline;
 }
 

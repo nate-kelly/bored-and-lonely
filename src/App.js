@@ -7,7 +7,10 @@ import './styles.css';
 import { useState } from 'react';
 
 function App() {
-  
+  // State to store/update activity and type variables with API and form values
+  const [ activity, setActivity ] = useState('');
+  const [ type, setType ] = useState('');
+
   // API call on form submit
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -30,10 +33,6 @@ function App() {
     setType(radioValue);
   }
 
-  // State to store update activity and type variables with API and form values
-  const [ activity, setActivity ] = useState('');
-  const [ type, setType ] = useState('');
-
   // Firesbase data
   // const [ tasks, setTasks ] = useState([]);
   // useEffect(() => {
@@ -52,6 +51,8 @@ function App() {
   //     setTasks(newState);
   //   })
   // }, []);
+
+  // On button click, push to database with activity as value
 
   // Page content
   return (
