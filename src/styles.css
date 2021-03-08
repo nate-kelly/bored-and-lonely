@@ -108,6 +108,11 @@ input {
 	top: 0;
 }
 
+.icon {
+  font-size: 3rem;
+  margin-left: 3rem;
+}
+
 label {
   margin-left: 6rem;
 }
@@ -120,7 +125,7 @@ label::before {
   position: absolute;
   border-radius: 50%;
   left: 0;
-  top: -0.2rem;
+  top: 0.2rem;
 }
 
 label::after {
@@ -130,7 +135,7 @@ label::after {
 	border-radius: 50%;
 	position: absolute;
 	left: 0.5rem;
-	top: 0.3rem;
+	top: 0.7rem;
 	transition: opacity 0.2s ease-in-out;
 }
 
