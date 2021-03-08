@@ -83,15 +83,9 @@ header {
 
 /* Form Styles */
 
-/* form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: left;
-} */
-
 .radioSelect {
   margin: 4rem 0;
+  position: relative;
 }
 
 label {
@@ -99,24 +93,13 @@ label {
   margin-left: 2rem;
 }
 
-/* input[type='radio'] {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-} */
-
-/* input {
+input {
   opacity: 0;
   height: 4rem;
   width: 4rem;
   position: absolute;
 	left: 0;
 	top: 0;
-}
-
-.icon {
-  font-size: 3rem;
-  margin-left: 3rem;
 }
 
 label {
@@ -153,7 +136,7 @@ input:checked + label::after {
 input:focus + label::before {
 	box-shadow: 0 0 0 0.3rem #d34500;	
   outline: 0.3rem solid transparent; 
-} */
+}
 
 button {
   padding: 2rem 4rem;
@@ -176,6 +159,15 @@ button:active {
   background: #333333;
   box-shadow: 0 0 #999;
   transform: translateY(0.5rem);
+}
+
+/* To-Do Section */
+.saveTask {
+  margin: 0 5rem;
+}
+
+.todoSection {
+  padding: 5rem 5rem; 
 }
 
 /* Footer Styles */
