@@ -2,8 +2,9 @@
 import Form from './Form.js';
 import Activities from './Activities.js'
 import axios from 'axios';
-import firebase from './firebase.js';
-import { useState, useEffect } from 'react';
+import './styles.css';
+// import firebase from './firebase.js';
+import { useState } from 'react';
 
 function App() {
   
