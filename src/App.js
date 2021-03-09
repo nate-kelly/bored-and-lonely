@@ -1,6 +1,7 @@
 import Form from './Form.js';
 import Activities from './Activities.js';
 import ToDo from './ToDo.js';
+import SaveButton from './SaveButton.js';
 import axios from 'axios';
 import './styles.css';
 import firebase from './firebase.js';
@@ -79,10 +80,8 @@ function App() {
           activity !== ''
           ? <>
               <Activities results={activity} />
-              <div className="saveTask">
-                <button onClick={handleClick}>Save task for later</button>
-              </div>
-              <ToDo save={todo} remove={removeTask} />
+              <SaveButton save={handleClick} />
+              <ToDo add={todo} remove={removeTask} />
             </>
           : null
           }
