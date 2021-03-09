@@ -1,12 +1,13 @@
 import Form from './Form.js';
-import Activities from './Activities.js'
+import Activities from './Activities.js';
+import ToDo from './ToDo.js';
 import axios from 'axios';
 import './styles.css';
 import firebase from './firebase.js';
 import { useState, useEffect } from 'react';
 
 function App() {
-  // State to store/update activity and type variables with API and form values
+  // State to store/update activity, type and todo variables with API and form values
   const [ activity, setActivity ] = useState('');
   const [ type, setType ] = useState('');
   const [ todo, setTodo ] = useState([]);
@@ -33,7 +34,7 @@ function App() {
     setType(radioValue);
   }
 
-  // Step 1: On button click, taking activity state and pushing to database
+  // On button click, taking activity state and pushing to database
   const handleClick = () => {
     // Reference db
     const dbRef = firebase.database().ref();
@@ -41,8 +42,13 @@ function App() {
     dbRef.push(activity);
   }
 
-  // Step 2: Capture change in database and display on page, map through
-  // Listening to a change and converting to array and updating state (useEffect only runs on page load)
+  const removeTask = (taskId) => {
+    const dbRef = firebase.database().ref();
+    dbRef.child(taskId).remove();
+  }
+
+  // Capture change in database and display on page
+    // Listening to a change and converting to array and updating state (useEffect only runs on page load)
   useEffect(() => {
     const dbRef = firebase.database().ref();
     // Event listener that fires on change in database
@@ -53,13 +59,11 @@ function App() {
       const data = response.val();
       // Access activity name through loop
       for (let key in data) {
-        newState.push(data[key]);
+        newState.push({key: key, name: data[key]});
       }
       setTodo(newState);
     })
   }, []);
-
-  // Need unique key for removal function
 
   // Page content
   return (
@@ -73,21 +77,15 @@ function App() {
           <Form submit={handleSubmit} selection={handleChange} />
           {
           activity !== ''
-          ? <Activities results={activity} />
+          ? <>
+              <Activities results={activity} />
+              <div className="saveTask">
+                <button onClick={handleClick}>Save task for later</button>
+              </div>
+              <ToDo save={todo} remove={removeTask} />
+            </>
           : null
           }
-          <div className="saveTask">
-            <button onClick={handleClick}>Save task</button>
-          </div>
-          <div className='todoSection'>
-            {
-            todo.map((item, index) => {
-              return (
-                  <p key={index}>{item}</p>
-                )
-              })
-            }
-          </div>
         </main>
         <footer>
           <p>Created at <a href='https://www.junocollege.com' target='_blank' rel='noreferrer'>Juno College</a></p>

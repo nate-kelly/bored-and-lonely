@@ -93,13 +93,17 @@ label {
   margin-left: 2rem;
 }
 
+label[for=diy] {
+  text-transform: uppercase;
+}
+
 input {
   opacity: 0;
   height: 4rem;
   width: 4rem;
   position: absolute;
-	left: 0;
-	top: 0;
+	left: -0.5rem;
+  top: -0.7rem;
 }
 
 label {
@@ -115,7 +119,7 @@ label::before {
   position: absolute;
   border-radius: 50%;
   left: 0;
-  top: 0.2rem;
+  top: -0.2rem;
 }
 
 label::after {
@@ -125,7 +129,7 @@ label::after {
 	border-radius: 50%;
 	position: absolute;
 	left: 0.5rem;
-	top: 0.7rem;
+	top: 0.3rem;
 	transition: opacity 0.2s ease-in-out;
 }
 
