@@ -18,7 +18,7 @@ function App() {
     event.preventDefault();
     axios({
       method: 'GET',
-      url: `http://www.boredapi.com/api/activity?type=${type}`,
+      url: `https://www.boredapi.com/api/activity?type=${type}`,
       dataResponse: 'JSON',
       params: {
         format: 'JSON'
