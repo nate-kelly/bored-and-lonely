@@ -1,7 +1,6 @@
 import Form from './Form.js';
 import Activities from './Activities.js';
 import ToDo from './ToDo.js';
-import SaveButton from './SaveButton.js';
 import axios from 'axios';
 import './styles.css';
 import firebase from './firebase.js';
@@ -78,10 +77,7 @@ function App() {
           <Form submit={handleSubmit} selection={handleChange} />
           {
           activity !== ''
-          ? <>
-              <Activities results={activity} />
-              <SaveButton save={handleClick} />
-            </>
+          ? <Activities results={activity} save={handleClick} />
           : null
           }
           {
