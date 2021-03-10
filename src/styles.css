@@ -19,7 +19,7 @@ html {
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  font-size: 2rem;
+  font-size: 1.8rem;
   letter-spacing: 0.2rem;
   color: #484848;
   background-color: #a3cef1;
@@ -41,6 +41,7 @@ body {
 
 .contentBox {
   background: ghostwhite;
+  margin: 5rem 0;
   box-shadow: 2rem 2rem #484848;
   border: 1px solid #484848;
 }
@@ -114,7 +115,7 @@ label::before {
   position: absolute;
   border-radius: 50%;
   left: 0;
-  top: -0.2rem;
+  top: -0.5rem;
 }
 
 label::after {
@@ -124,7 +125,7 @@ label::after {
 	border-radius: 50%;
 	position: absolute;
 	left: 0.5rem;
-	top: 0.3rem;
+	top: 0;
 	transition: opacity 0.2s ease-in-out;
 }
 
@@ -223,4 +224,54 @@ footer a:hover,
 footer a:focus {
   color: black;
   text-decoration: underline;
+}
+
+/* Media Queries */
+
+@media (max-width: 940px) {
+  .wrapper {
+    width: 85%;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    width: 90%;
+  }
+  .contentBox {
+    box-shadow: 1.5rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    width: 95%;
+  }
+  .contentBox {
+    box-shadow: 1rem 1rem;
+  }
+  h1 {
+    font-size: 5rem;
+  }
+  h2,
+  h3 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .wrapper {
+    width: 100%;
+  }
+  .contentBox {
+    box-shadow: none;
+    margin: 0;
+  }
+  h1 {
+    font-size: 4rem;
+  }
+  h2,
+  h3 {
+    font-size: 2rem;
+  }
 }

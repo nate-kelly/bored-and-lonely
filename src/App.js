@@ -8,7 +8,7 @@ import firebase from './firebase.js';
 import { useState, useEffect } from 'react';
 
 function App() {
-  // State to store/update activity, type and todo variables with API and form values
+  // Initialize state
   const [ activity, setActivity ] = useState('');
   const [ type, setType ] = useState('');
   const [ todo, setTodo ] = useState([]);
@@ -43,13 +43,13 @@ function App() {
     dbRef.push(activity);
   }
 
+  // Remove saved activity from to-do list and database
   const removeTask = (taskId) => {
     const dbRef = firebase.database().ref();
     dbRef.child(taskId).remove();
   }
 
   // Capture change in database and display on page
-    // Listening to a change and converting to array and updating state (useEffect only runs on page load)
   useEffect(() => {
     const dbRef = firebase.database().ref();
     // Event listener that fires on change in database
