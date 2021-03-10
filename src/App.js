@@ -81,8 +81,13 @@ function App() {
           ? <>
               <Activities results={activity} />
               <SaveButton save={handleClick} />
-              <ToDo add={todo} remove={removeTask} />
             </>
+          : null
+          }
+          {
+          todo.length !== 0
+          ?
+          <ToDo add={todo} remove={removeTask} />
           : null
           }
         </main>

@@ -7,7 +7,7 @@ const SaveButton = (props) => {
       className='saveTask'
       onClick={props.save}>
       <FontAwesomeIcon icon={faSave} className='icon' />
-        Save
+        Save for later
     </button>
   )
 }

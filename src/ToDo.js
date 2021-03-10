@@ -1,6 +1,7 @@
 const ToDo = ({ add, remove }) => {
   return (
     <section className='todoSection'>
+      <p>Your list</p>
       <ul>
         {
           add.map((item) => {
