@@ -1,4 +1,4 @@
-const Form = ({ submit, selection }) => {
+const Form = ({ submit, handleChange }) => {
   const categories = ['recreational', 'education', 'cooking', 'relaxation', 'busywork', 'music', 'diy'];
   return (
     <section className='formSection'>
@@ -12,7 +12,7 @@ const Form = ({ submit, selection }) => {
                   type='radio'
                   name='activityType'
                   id={type}
-                  onChange={(event) => selection(event.target.value)}
+                  onChange={(event) => handleChange(event.target.value)} // Sends value to handleChange function
                   value={type}
                   required
                 />

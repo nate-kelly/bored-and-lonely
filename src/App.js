@@ -8,9 +8,12 @@ import { useState, useEffect } from 'react';
 
 function App() {
   // Initialize state
-  const [activity, setActivity] = useState('');
-  const [type, setType] = useState('');
-  const [todo, setTodo] = useState([]);
+  const [activity, setActivity] = useState(''); // Tracks/updates the returned API value
+  const [type, setType] = useState(''); // Tracks/updates the selected category of activity
+  const [todo, setTodo] = useState([]); // Tracks/updates the saved activity
+
+  // Firebase reference
+  const dbRef = firebase.database().ref();
 
   // API call on form submit
   const handleSubmit = (event) => {
@@ -23,47 +26,43 @@ function App() {
         format: 'JSON'
       }
     }).then(response => {
-      setActivity(response.data.activity);
+      setActivity(response.data.activity); // Set activity state value
     }).catch(() => {
-      alert('Sorry, there is an issue retriving your request. Please try again later.')
+      alert('Sorry, there is an issue with our API. Please try again later.')
     });
   }
 
-  // Capture radio input value
+  // Capture radio input value and update type state
   const handleChange = (radioValue) => {
     setType(radioValue);
   }
 
-  // On button click, taking activity state and pushing to database
+  // On save button click, taking activity state and pushing to database
   const handleClick = () => {
-    // Reference db
-    const dbRef = firebase.database().ref();
-    // Push activity state to db
     dbRef.push(activity);
   }
 
   // Remove saved activity from to-do list and database
   const removeTask = (taskId) => {
-    const dbRef = firebase.database().ref();
     dbRef.child(taskId).remove();
   }
 
   // Capture change in database and display on page
+  // When you want something to happen on the page that is not directly related to state
   useEffect(() => {
-    const dbRef = firebase.database().ref();
-    // Event listener that fires on change in database
+    // Event listener that fires on change in database (response is just the current data)
     dbRef.on('value', (response) => {
       // Variable to store new state
       const newState = [];
       // Variable to store response from our query to Firebase
-      const data = response.val();
-      // Access activity name through loop
-      for (let key in data) {
-        newState.push({ key: key, name: data[key] });
+      const data = response.val(); // Object containing key and activity name, from Firebase
+      // Access activity name through for-in loop
+      for (let uniqueKey in data) {
+        newState.push({ key: uniqueKey, name: data[uniqueKey] }); // Creating array of objects with key and name, data[uniqueKey] finds the name with that unique key
       }
       setTodo(newState);
     })
-  }, []);
+  }, [dbRef]);
 
   // Page content
   return (
@@ -74,7 +73,7 @@ function App() {
           <h2>An activity generator for lethargic lockdowns</h2>
         </header>
         <main>
-          <Form submit={handleSubmit} selection={handleChange} />
+          <Form submit={handleSubmit} handleChange={handleChange} />
           {
             activity !== ''
               ? <Activities results={activity} save={handleClick} />
@@ -82,8 +81,7 @@ function App() {
           }
           {
             todo.length !== 0
-              ?
-              <ToDo add={todo} remove={removeTask} />
+              ? <ToDo savedItem={todo} remove={removeTask} />
               : null
           }
         </main>

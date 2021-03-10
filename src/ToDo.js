@@ -1,10 +1,10 @@
-const ToDo = ({ add, remove }) => {
+const ToDo = ({ savedItem, remove }) => {
   return (
     <section className='todoSection'>
       <p>Your list</p>
       <ul>
         {
-          add.map((item) => {
+          savedItem.map((item) => {
             return (
               <li key={item.key}>
                 {item.name}

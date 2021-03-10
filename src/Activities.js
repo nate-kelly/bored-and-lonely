@@ -9,8 +9,8 @@ const Activities = ({ results, save }) => {
         className='saveTask'
         onClick={save}>
         <FontAwesomeIcon icon={faSave} className='icon' />
-        Save for later
-    </button>
+          Save for later
+      </button>
     </section>
   )
 }
