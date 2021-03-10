@@ -112,7 +112,7 @@ input {
   top: -0.7rem;
 }
 
-.radioSelect label::before {
+label::before {
   border: 2px solid var(--darkblue);
   content: '';
   height: 3rem;
@@ -123,7 +123,7 @@ input {
   top: -0.5rem;
 }
 
-.radioSelect label::after {
+label::after {
   content: '';
 	opacity: 0;
 	border: 1rem solid var(--orange);
@@ -138,12 +138,12 @@ input:checked + label {
   font-weight: 700;
 }
 
-.radioSelect input:checked + label::after {
+input:checked + label::after {
   opacity: 1;
 }
 
-.radioSelect input:focus + label::before {
-	box-shadow: 0 0 0 0.3rem var(--orange);	
+input:focus + label::before {
+	box-shadow: 0 0 0.3rem 0.3rem var(--orange);	
   outline: 0.3rem solid transparent; 
 }
 
@@ -190,12 +190,11 @@ ul {
 }
 
 .removeTask {
-  margin: 0 0.5rem 0;
-  padding: 1rem;
+  margin: 0 1.5rem 0;
+  padding: 0;
   background: none;
   color: inherit;
   box-shadow: none;
-  border-radius: 50%;
   transition: all 0.1s ease-in-out;
 }
 

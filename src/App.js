@@ -48,7 +48,6 @@ function App() {
   }
 
   // Capture change in database and display on page
-  // When you want something to happen on the page that is not directly related to state
   useEffect(() => {
     // Event listener that fires on change in database (response is just the current data)
     dbRef.on('value', (response) => {
@@ -73,15 +72,15 @@ function App() {
           <h2>An activity generator for lethargic lockdowns</h2>
         </header>
         <main>
-          <Form submit={handleSubmit} handleChange={handleChange} />
+          <Form handleSubmit={handleSubmit} handleChange={handleChange} />
           {
             activity !== ''
-              ? <Activities results={activity} save={handleClick} />
+              ? <Activities activity={activity} handleClick={handleClick} />
               : null
           }
           {
             todo.length !== 0
-              ? <ToDo savedItem={todo} remove={removeTask} />
+              ? <ToDo todo={todo} removeTask={removeTask} />
               : null
           }
         </main>

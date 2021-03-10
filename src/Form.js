@@ -1,8 +1,8 @@
-const Form = ({ submit, handleChange }) => {
+const Form = ({ handleSubmit, handleChange }) => {
   const categories = ['recreational', 'education', 'cooking', 'relaxation', 'busywork', 'music', 'diy'];
   return (
     <section className='formSection'>
-      <form onSubmit={submit}>
+      <form onSubmit={handleSubmit}>
         <h3>Choose a category:</h3>
         {
           categories.map((type, index) => {

@@ -1,15 +1,15 @@
-const ToDo = ({ savedItem, remove }) => {
+const ToDo = ({ todo, removeTask }) => {
   return (
     <section className='todoSection'>
       <p>Your list</p>
       <ul>
         {
-          savedItem.map((item) => {
+          todo.map((item) => {
             return (
               <li key={item.key}>
                 {item.name}
                 <button
-                  onClick={() => remove(item.key)}
+                  onClick={() => removeTask(item.key)}
                   className="removeTask">&#x2715;
                 </button>
               </li>
