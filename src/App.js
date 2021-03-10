@@ -8,9 +8,9 @@ import { useState, useEffect } from 'react';
 
 function App() {
   // Initialize state
-  const [ activity, setActivity ] = useState('');
-  const [ type, setType ] = useState('');
-  const [ todo, setTodo ] = useState([]);
+  const [activity, setActivity] = useState('');
+  const [type, setType] = useState('');
+  const [todo, setTodo] = useState([]);
 
   // API call on form submit
   const handleSubmit = (event) => {
@@ -59,7 +59,7 @@ function App() {
       const data = response.val();
       // Access activity name through loop
       for (let key in data) {
-        newState.push({key: key, name: data[key]});
+        newState.push({ key: key, name: data[key] });
       }
       setTodo(newState);
     })
@@ -70,25 +70,25 @@ function App() {
     <div className='wrapper'>
       <div className='contentBox'>
         <header>
-            <h1>Bored &amp; Lonely</h1>
-            <h2>An activity generator for lethargic lockdowns</h2>
+          <h1>Bored &amp; Lonely</h1>
+          <h2>An activity generator for lethargic lockdowns</h2>
         </header>
         <main>
           <Form submit={handleSubmit} selection={handleChange} />
           {
-          activity !== ''
-          ? <Activities results={activity} save={handleClick} />
-          : null
+            activity !== ''
+              ? <Activities results={activity} save={handleClick} />
+              : null
           }
           {
-          todo.length !== 0
-          ?
-          <ToDo add={todo} remove={removeTask} />
-          : null
+            todo.length !== 0
+              ?
+              <ToDo add={todo} remove={removeTask} />
+              : null
           }
         </main>
         <footer>
-          <p>Created at <a href='https://www.junocollege.com' target='_blank' rel='noreferrer'>Juno College</a></p>
+          <p>Created by Nathan Kelly at <a href='https://www.junocollege.com' target='_blank' rel='noreferrer'>Juno College</a>. Powered by <a href='https://www.boredapi.com/' target='_blank' rel='noreferrer'>The Bored API</a>.</p>
         </footer>
       </div>
     </div>

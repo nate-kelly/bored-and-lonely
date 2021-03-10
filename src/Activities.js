@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSave } from '@fortawesome/free-solid-svg-icons';
 
-const Activities = ({results, save}) => {
+const Activities = ({ results, save }) => {
   return (
-    <section className="resultSection">
+    <section className='resultSection'>
       <h3>{results}</h3>
       <button
         className='saveTask'
