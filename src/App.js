@@ -8,9 +8,9 @@ import { useState, useEffect } from 'react';
 
 function App() {
   // Initialize state
-  const [activity, setActivity] = useState(''); // Tracks/updates the returned API value
-  const [type, setType] = useState(''); // Tracks/updates the selected category of activity
-  const [todo, setTodo] = useState([]); // Tracks/updates the saved activity
+  const [activity, setActivity] = useState('');
+  const [type, setType] = useState('');
+  const [todo, setTodo] = useState([]);
 
   // Firebase reference
   const dbRef = firebase.database().ref();
@@ -26,38 +26,34 @@ function App() {
         format: 'JSON'
       }
     }).then(response => {
-      setActivity(response.data.activity); // Set activity state value
+      setActivity(response.data.activity);
     }).catch(() => {
-      alert('Sorry, there is an issue with our API. Please try again later.')
+      alert('Sorry, there was an error. Please try again later.')
     });
   }
 
-  // Capture radio input value and update type state
+  // Capture radio input value
   const handleChange = (radioValue) => {
     setType(radioValue);
   }
 
-  // On save button click, taking activity state and pushing to database
+  // Save activity and push to database
   const handleClick = () => {
     dbRef.push(activity);
   }
 
-  // Remove saved activity from to-do list and database
+  // Remove saved activity from list and database
   const removeTask = (taskId) => {
     dbRef.child(taskId).remove();
   }
 
   // Capture change in database and display on page
   useEffect(() => {
-    // Event listener that fires on change in database (response is just the current data)
     dbRef.on('value', (response) => {
-      // Variable to store new state
       const newState = [];
-      // Variable to store response from our query to Firebase
-      const data = response.val(); // Object containing key and activity name, from Firebase
-      // Access activity name through for-in loop
+      const data = response.val();
       for (let uniqueKey in data) {
-        newState.push({ key: uniqueKey, name: data[uniqueKey] }); // Creating array of objects with key and name, data[uniqueKey] finds the name with that unique key
+        newState.push({ key: uniqueKey, name: data[uniqueKey] });
       }
       setTodo(newState);
     })

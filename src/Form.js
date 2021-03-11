@@ -12,7 +12,7 @@ const Form = ({ handleSubmit, handleChange }) => {
                   type='radio'
                   name='activityType'
                   id={type}
-                  onChange={(event) => handleChange(event.target.value)} // Sends value to handleChange function
+                  onChange={(event) => handleChange(event.target.value)}
                   value={type}
                   required
                 />
