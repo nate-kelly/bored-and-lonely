@@ -7,11 +7,12 @@ const ToDo = ({ todo, removeTask }) => {
           todo.map((item) => {
             return (
               <li key={item.key}>
-                {item.name}
                 <button
                   onClick={() => removeTask(item.key)}
-                  className="removeTask">&#x2715;
+                  className="removeTask">
+                  &#x2715;
                 </button>
+                {item.name}
               </li>
             )
           })

@@ -109,7 +109,7 @@ input {
   width: 4rem;
   position: absolute;
 	left: -0.5rem;
-  top: -0.7rem;
+  top: -0.9rem;
 }
 
 label::before {
@@ -127,8 +127,8 @@ label::after {
   content: '';
 	opacity: 0;
 	border: 1rem solid var(--orange);
-	border-radius: 50%;
 	position: absolute;
+	border-radius: 50%;
 	left: 0.5rem;
 	top: 0;
 	transition: opacity 0.2s ease-in-out;
@@ -181,6 +181,7 @@ button:active {
 .todoSection p {
   font-weight: 700;
   padding-bottom: 2rem;
+  margin-bottom: 3rem;
   border-bottom: 0.1rem solid var(--medgray);
 }
 
@@ -189,8 +190,12 @@ ul {
   padding: 0;
 }
 
+li {
+  margin: 1rem 0;
+}
+
 .removeTask {
-  margin: 0 1.5rem 0;
+  margin: 0 1.5rem 1.5rem 0;
   padding: 0;
   background: none;
   color: inherit;
@@ -250,7 +255,7 @@ footer a:focus {
     width: 95%;
   }
   .contentBox {
-    box-shadow: 1rem 1rem;
+    box-shadow: 0.5rem 0.5rem;
   }
   h1 {
     font-size: 5rem;
