@@ -6,16 +6,13 @@ import './styles.css';
 import firebase from './firebase.js';
 import { useState, useEffect } from 'react';
 
-function App() {
-  // Initialize state
+export default function App() {
   const [activity, setActivity] = useState('');
   const [type, setType] = useState('');
   const [todo, setTodo] = useState([]);
 
-  // Firebase reference
   const dbRef = firebase.database().ref();
 
-  // API call on form submit
   const handleSubmit = (event) => {
     event.preventDefault();
     axios({
@@ -28,26 +25,22 @@ function App() {
     }).then(response => {
       setActivity(response.data.activity);
     }).catch(() => {
-      alert('Sorry, there was an error. Please try again later.')
+      alert('Sorry, there was an error. Please try again later.');
     });
-  }
+  };
 
-  // Capture radio input value
   const handleChange = (radioValue) => {
     setType(radioValue);
-  }
+  };
 
-  // Save activity and push to database
   const handleClick = () => {
     dbRef.push(activity);
-  }
+  };
 
-  // Remove saved activity from list and database
   const removeTask = (taskId) => {
     dbRef.child(taskId).remove();
-  }
+  };
 
-  // Capture change in database and display on page
   useEffect(() => {
     dbRef.on('value', (response) => {
       const newState = [];
@@ -56,10 +49,9 @@ function App() {
         newState.push({ key: uniqueKey, name: data[uniqueKey] });
       }
       setTodo(newState);
-    })
+    });
   }, [dbRef]);
 
-  // Page content
   return (
     <div className='wrapper'>
       <div className='contentBox'>
@@ -87,5 +79,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
